@@ -116,7 +116,7 @@ public class BankApplication {
             if (money > 0) {
                 if (account.getBalance() >= money) {
                     account.setBalance(account.getBalance() - money);
-                    System.out.println("결과: 출금이 성공되었습니다.");
+                    System.out.println("결과: 출금이 성공되었습니다.  ");
                 } else {
                     System.out.println("결과: 잔액이 부족합니다.");
                 }
