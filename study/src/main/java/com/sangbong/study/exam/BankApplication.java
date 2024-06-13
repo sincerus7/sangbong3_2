@@ -1,9 +1,8 @@
 package com.sangbong.study.exam;
 
-import java.io.*;
 import java.util.Scanner;
 
-public class Main {
+public class BankApplication {
     private static Account[] accountArray = new Account[100];
     private static Scanner scanner = new Scanner(System.in);
 
@@ -94,6 +93,7 @@ public class Main {
             System.out.println("결과: 예금이 성공되었습니다.");
         } else {
             System.out.println("결과: 계좌가 없습니다.");
+            return;
         }
     }
 
@@ -112,9 +112,11 @@ public class Main {
         }
         else if (account.getBalance() < money) {
             System.out.println("결과: 잔액이 부족합니다.");
+            return;
         }
         else {
             System.out.println("결과: 계좌가 없습니다.");
+            return;
         }
     }
 }
