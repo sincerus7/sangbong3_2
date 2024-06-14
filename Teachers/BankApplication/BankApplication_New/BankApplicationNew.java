@@ -37,6 +37,7 @@ public class BankApplicationNew {
         System.out.print("초기입금액:");
         String current = input.nextLine();
         int money = Integer.parseInt(current);
+
         this.accountService.addAccount(new Account(name, bankNumber, money));
     }
 
@@ -47,35 +48,45 @@ public class BankApplicationNew {
     }
 
     private void income(Scanner input) throws Exception {
-        System.out.println("--------");
-        System.out.println("예금");
-        System.out.println("--------");
-
-        System.out.print("계좌번호:");
-        String bankNumber = input.nextLine();
-        System.out.print("예금액:");
-        String current = input.nextLine();
-        int money = Integer.parseInt(current);
-
-        if ( this.accountService.deposit(bankNumber, money) ) {
+        Account result = getInputConsole(input, "예금");
+        if ( result == null ) {
+            System.out.println("에러: 계좌가 존재하지 않습니다.");
+            return;
+        }
+        if ( this.accountService.deposit(result.getBankNumber(), result.getCurrent()) ) {
             System.out.println("결과: 예금이 성공되었습니다.");
         }
     }
 
     private void outcome(Scanner input) throws Exception {
+        Account result = getInputConsole(input, "출금");
+        if ( result == null ) {
+            System.out.println("에러: 계좌가 존재하지 않습니다.");
+            return;
+        }
+        if ( this.accountService.withdraw(result.getBankNumber(), result.getCurrent()) ) {
+            System.out.println("결과: 출금이 성공되었습니다.");
+        } else {
+            System.out.println("에러: 출금이 안되었습니다.");
+        }
+    }
+
+    private Account getInputConsole(Scanner input, String title) {
         System.out.println("--------");
-        System.out.println("출금");
+        System.out.println(title);
         System.out.println("--------");
 
         System.out.print("계좌번호:");
         String bankNumber = input.nextLine();
-        System.out.print("출금액:");
+        Account account = this.accountService.findAccountByNumber(bankNumber);
+        if ( account == null ) {
+            return null;
+        }
+        System.out.print(title + "액:");
         String current = input.nextLine();
         int money = Integer.parseInt(current);
 
-        if ( this.accountService.deposit(bankNumber, money) ) {
-            System.out.println("결과: 출금이 성공되었습니다.");
-        }
+        return new Account("임시명", bankNumber, money);
     }
 
     private void loadJson(Scanner input) throws Exception {
