@@ -3,7 +3,7 @@ ch.7 확인문제
 1.1
 2.2
 3.1
-4.2
+4.4
 5.2
 
 6.child 클래스에서 this.name = name; 을 super(name); 으로 변경
