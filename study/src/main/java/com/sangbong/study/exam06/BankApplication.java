@@ -1,4 +1,4 @@
-package com.sangbong.study.exam;
+package com.sangbong.study.exam06;
 
 import java.util.Scanner;
 
