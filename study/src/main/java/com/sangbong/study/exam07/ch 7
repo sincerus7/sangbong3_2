@@ -1,1 +1,25 @@
 ch.7 확인문제
+
+1.1
+2.2
+3.1
+4.2
+5.2
+
+6.child 클래스에서 this.name = name; 을 super(name); 으로 변경
+
+7.Parent(String nation) call
+  Parent() call
+  Child(String name) call
+  Child() call
+
+8.스노우 타이어가 굴러갑니다
+  스노우 타이어가 굴러갑니다
+
+9.2
+
+10.추상 메소드를 Computer 클래스에서 오버라이딩하지 않아서
+
+11.super
+
+12.a instanceof C c
